@@ -107,3 +107,28 @@ axios({
   url: '/base/post',
   data: searchParams
 })
+
+// process response data demo
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: {
+    message: 'hello I am unconfig request.responseType reponse data',
+    baz: 2
+  }
+}).then(res => {
+  console.log(res)
+})
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  responseType: 'json',
+  data: {
+    message: 'hello I am request.responseType === \"json\" response data',
+    baz: 2
+  }
+}).then(res => {
+  console.log(res)
+})
