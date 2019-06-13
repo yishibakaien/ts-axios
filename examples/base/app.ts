@@ -79,3 +79,31 @@ axios({
   url: '/base/buffer',
   data: arr
 })
+
+// precess request headers post demo
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  headers: {
+    'content-type': 'application/json',
+    'Accept': 'application/json, text/plain, */*'
+  },
+  data: {
+    a: 1,
+    b: 2
+  }
+})
+
+/**
+ * 浏览器本身支持直接传入 URLSearchParams | FormData 等类型对象
+ * 会自动将请求添加一个合适的 Content-Type
+ */
+const paramsString = 'q=URLUtils.searchParams&topic=api'
+const searchParams = new URLSearchParams(paramsString)
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: searchParams
+})
