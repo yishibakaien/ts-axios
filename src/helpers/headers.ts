@@ -18,6 +18,24 @@ export function processHeaders(headers: any, data: any): any {
       headers['Content-Type'] = 'application/json;charset=utf-8'
     }
   }
-  
+
   return headers
+}
+
+export function parseHeaders(headers: string): any {
+  let parsed = Object.create(null)
+  if (!headers) {
+    return parsed
+  }
+
+  headers.split('\r\n').forEach(line => {
+    let [key, value] = line.split(':')
+    key = key.trim().toLocaleLowerCase()
+    if (!key) return
+    if (value) {
+      value = value.trim()
+    }
+    parsed[key] = value
+  })
+  return parsed
 }
