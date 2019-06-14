@@ -52,6 +52,10 @@ router.post('/base/buffer', function (req, res) {
   })
 })
 
+router.get('/error/get', function (req, res) {
+  res.json(req.query)
+})
+
 app.use(router)
 
 const port = process.env.PORT || 8080
