@@ -39,7 +39,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         request
       }
 
-      responseStatus(response)
+      handleResponse(response)
     }
 
     request.onerror = () => {
@@ -50,9 +50,9 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       reject(new Error(`Timeout of ${timeout} ms exceeded`))
     }
 
-    function responseStatus(response: AxiosResponse): void {
+    function handleResponse(response: AxiosResponse): void {
       const { status } = response
-      if (status >= 200 && status <= 300) {
+      if (status >= 200 && status < 300) {
         resolve(response)
       } else {
         reject(new Error(`Request failed with status code ${status}`))
