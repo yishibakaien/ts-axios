@@ -1,6 +1,6 @@
-import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types'
-import { parseHeaders } from './helpers/headers'
-import { createError } from './helpers/error'
+import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from '../types'
+import { parseHeaders } from '../helpers/headers'
+import { createError } from '../helpers/error'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
@@ -16,7 +16,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     }
 
     // 第三个参数为 async 是否是异步请求
-    request.open(method.toUpperCase(), url, true)
+    // 这里可以保证运行时 url 是有值的
+    request.open(method.toUpperCase(), url!, true)
 
     request.onreadystatechange = () => {
       if (request.readyState !== 4) {
