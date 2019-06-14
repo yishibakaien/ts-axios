@@ -1,5 +1,3 @@
-import { request } from "https";
-
 export type Method =
   | 'get'
   | 'GET'
@@ -22,7 +20,7 @@ export interface AxiosRequestConfig {
   data?: any
   params?: any
   headers?: any
-  responseType?: XMLHttpRequestResponseType 
+  responseType?: XMLHttpRequestResponseType
 }
 
 export interface AxiosResponse {
@@ -34,6 +32,4 @@ export interface AxiosResponse {
   request: any
 }
 
-export interface AxiosPromise extends Promise<AxiosResponse> {
-
-}
+export interface AxiosPromise extends Promise<AxiosResponse> {}
