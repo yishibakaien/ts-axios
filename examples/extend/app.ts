@@ -30,3 +30,19 @@ axios.put('/extend/put', { msg: 'put' })
 
 axios.patch('/extend/patch', { msg: 'patch' })
 
+
+// 函数重载 demo
+axios({
+  url: '/extend/post',
+  method: 'post',
+  data: {
+    msg: 'hi normal'
+  }
+})
+
+axios('/extend/post', {
+  method: 'post',
+  data: {
+    msg: 'hi function reload'
+  }
+})
