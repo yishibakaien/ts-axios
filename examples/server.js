@@ -122,4 +122,16 @@ function registerExtendRouter() {
   router.patch('/extend/patch', function (req, res) {
     res.json(req.body)
   })
+
+  // 响应数据支持泛型接口
+  router.get('/extend/user', function (req, res) {
+    res.json({
+      code: 0,
+      message: 'ok',
+      result: {
+        name: 'Alice',
+        age: 18
+      }
+    })
+  })
 }

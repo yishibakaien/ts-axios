@@ -46,3 +46,29 @@ axios('/extend/post', {
     msg: 'hi function reload'
   }
 })
+
+// 响应数据支持泛型 demo
+interface ResponseData<T=any> {
+  code: number
+  result: T
+  message: string
+}
+
+interface User {
+  name: string
+  age: number
+}
+
+function getUser<T>() {
+  return axios<ResponseData<T>>('/extend/user')
+    .then(res => res.data)
+    .catch(err => console.error(err))
+}
+
+async function test() {
+  const user = await getUser<User>()
+  if (user) {
+    console.log(user.result.name)
+  }
+}
+test()
