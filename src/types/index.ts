@@ -82,6 +82,10 @@ export interface AxiosInstance extends Axios{
   <T=any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
 }
 
+export interface AxiosStatic extends AxiosInstance {
+  create(config?: AxiosRequestConfig): AxiosInstance
+}
+
 export interface AxiosInterceptorManager<T> {
   // 返回值的 number 是这个 interceptor 的 ID 用于 eject 的时候删除此 interceptor
   use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number
