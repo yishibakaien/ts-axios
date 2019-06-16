@@ -41,7 +41,7 @@ export function parseHeaders(headers: string): any {
   return parsed
 }
 
-export function flatternHeaders(headers: any, method: Method): any {
+export function flattenHeaders(headers: any, method: Method): any {
   if (!headers) return headers
 
   headers = deepMerge(headers.common, headers[method], headers)

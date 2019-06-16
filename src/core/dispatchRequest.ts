@@ -2,7 +2,7 @@ import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from '../types'
 import xhr from './xhr'
 import { buildURL } from '../helpers/url'
 import { transformRequest, transformResponse } from '../helpers/data'
-import { processHeaders, flatternHeaders } from '../helpers/headers'
+import { processHeaders, flattenHeaders } from '../helpers/headers'
 
 export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromise {
   precessConfig(config)
@@ -22,7 +22,7 @@ function precessConfig(config: AxiosRequestConfig): void {
   config.data = transformRequestData(config)
 
   // 这里 config.method 类型断言，可以保证运行时有值
-  config.headers = flatternHeaders(config.headers, config.method!)
+  config.headers = flattenHeaders(config.headers, config.method!)
 }
 
 function transformURL(config: AxiosRequestConfig): string {
