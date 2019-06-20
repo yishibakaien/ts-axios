@@ -31,5 +31,5 @@ app.use(router)
 
 const port = 8088
 module.exports = app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}, Ctrl+C to stop`)
+  console.log(`Server listening on http://127.0.0.1:${port}, Ctrl+C to stop`)
 })
