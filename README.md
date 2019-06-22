@@ -7,8 +7,9 @@
 - 支持请求和响应数据自定义拦截器
 - 支持外部取消请求
 - 支持跨域请求携带 cookie
-- 支持 upload/download 进度监控
 - 支持客户端 XSRF 防御
+- 支持 upload/download 进度监控
+- 支持 http authorization
 
 # to do
 - 单元测试编写
