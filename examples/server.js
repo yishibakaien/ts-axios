@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const mutipart = require('connect-multiparty')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const WebpackConfig = require('./webpack.config')
+const path = require('path')
 
 require('./server2')
 
@@ -32,6 +34,11 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
+// 用于将文件上传到指定文件
+app.use(mutipart({
+  uploadDir: path.resolve(__dirname, 'accept-upload-file')
+}))
+
 const router = express.Router()
 
 registerSimpleRouter()
@@ -49,6 +56,8 @@ registerConfigRouter()
 registerCancelRouter()
 
 registerMoreRouter()
+
+registerUploadRouter()
 
 app.use(router)
 
@@ -182,5 +191,12 @@ function registerCancelRouter() {
 function registerMoreRouter() {
   router.get('/more/get', (req, res) => {
     res.json(req.cookies)
+  })
+}
+
+function registerUploadRouter() {
+  router.post('/upload-download/upload', function (req, res) {
+    console.log(req.body, req.files)
+    res.end('upload success!')
   })
 }
