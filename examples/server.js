@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const mutipart = require('connect-multiparty')
+const atob = require('atob')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
@@ -191,6 +192,19 @@ function registerCancelRouter() {
 function registerMoreRouter() {
   router.get('/more/get', (req, res) => {
     res.json(req.cookies)
+  })
+
+  router.post('/more/post', function (req, res) {
+    const auth = req.headers.authorization
+    const [type, credentials] = auth.split(' ')
+    console.log('atob on server:', atob(credentials))
+    const [username, password] = atob(credentials).split(':').map(item => item.trim())
+    if (type === 'Basic' && username === 'chen' && password === '123456') {
+      res.json(req.body)
+    } else {
+      res.status(401)
+      res.end('UnAuthorization')
+    }
   })
 }
 
