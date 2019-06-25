@@ -51,7 +51,7 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
@@ -71,7 +71,11 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/*.{js,ts}",
+      "src/**/*.{js,ts}"
+    ],
+    "setUpFilesAfterEnv": [
+      "<rootDir>/test/boot.ts"
     ]
   },
   "prettier": {
@@ -86,7 +90,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
-    "@types/jest": "^23.3.2",
+    "@types/jest": "^24.0.13",
     "@types/node": "^10.11.0",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.5.3",
@@ -102,8 +106,8 @@
     "cz-conventional-changelog": "^2.1.0",
     "express": "^4.17.1",
     "husky": "^1.0.1",
-    "jest": "^23.6.0",
-    "jest-config": "^23.6.0",
+    "jest": "^24.8.0",
+    "jest-config": "^24.8.0",
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
     "nprogress": "^0.2.0",
@@ -122,7 +126,7 @@
     "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
     "travis-deploy-once": "^5.0.9",
-    "ts-jest": "^23.10.2",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
@@ -130,7 +134,7 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-loader": "^3.5.4",
     "typedoc": "^0.12.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.4.5",
     "webpack": "^4.33.0",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0"
