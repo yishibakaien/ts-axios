@@ -21,10 +21,10 @@ function precessConfig(config: AxiosRequestConfig): void {
 }
 
 function transformURL(config: AxiosRequestConfig): string {
-  const { url, params } = config
+  const { url, params, paramsSerializer } = config
 
   // 这里可以保证运行时 url 是有值的
-  return buildURL(url!, params)
+  return buildURL(url!, params, paramsSerializer)
 }
 
 function transformResponseData(res: AxiosResponse): AxiosResponse {
