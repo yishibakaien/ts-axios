@@ -10,6 +10,12 @@
 - 支持客户端 XSRF 防御
 - 支持 upload/download 进度监控
 - 支持 http authorization
+- 自定义合法状态码
+- 自定义参数序列化
+- 支持配置 baseURL
+- axios.all axios.spread axios.getUri 
+
+所有 axios 官方库浏览器端功能已实现
 
 # to do
 - 单元测试编写
