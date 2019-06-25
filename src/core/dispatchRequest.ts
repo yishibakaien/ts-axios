@@ -20,7 +20,7 @@ function precessConfig(config: AxiosRequestConfig): void {
   config.headers = flattenHeaders(config.headers, config.method!)
 }
 
-function transformURL(config: AxiosRequestConfig): string {
+export function transformURL(config: AxiosRequestConfig): string {
   const { params, paramsSerializer, baseURL } = config
   let { url } = config
   if (baseURL && !isAbsoluteURL(url!)) {
