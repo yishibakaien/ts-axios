@@ -8,7 +8,7 @@ describe('helpers:headers', () => {
           'Connection: keep-alive\r\n' +
           'Transfer-Encoding: chunked\r\n' +
           'Date: Tue, 29 Jan 2019 15:39:44 GMT\r\n' +
-          'key:' +
+          'key:\r\n' +
           ': empty key\r\n'
       )
 
