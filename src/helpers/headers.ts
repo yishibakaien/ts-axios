@@ -30,6 +30,7 @@ export function parseHeaders(headers: string): any {
   }
 
   headers.split('\r\n').forEach(line => {
+    // 字符串可能存在多个 ":" 的情况
     let [key, ...vals] = line.split(':')
     key = key.trim().toLocaleLowerCase()
     if (!key) return
